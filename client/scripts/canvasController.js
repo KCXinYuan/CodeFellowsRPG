@@ -18,7 +18,8 @@ function loadLastCanvas(context){
 };
 
 function clearCanvas(contextNumber){
-  contextNumber.clearRect(0,0,appWidth,appHeight);
+  contextNumber.fillStyle = 'black';
+  contextNumber.clearRect(0,0, appWidth, appHeight);
 };
 
 //to prepare a scene on hidden canvas

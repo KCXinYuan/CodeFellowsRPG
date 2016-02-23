@@ -3,23 +3,13 @@
 var textBox = new Image();
 
 function showTextBox() {
-
-
   console.log('show Text Box');
-
-
   textBox.src = 'images/battleScene/upperTextBox.png';
   textBox.xcoord = 14;
   textBox.ycoord = 14;
-
-
   ctx.drawImage(textBox, textBox.xcoord, textBox.ycoord);
-
 }
-
-
 function hideTextBox() {
-
   clearCanvas(ctx);
   ctx.fillStyle = 'black';
   ctx.fillRect(0,0,appWidth, appHeight);

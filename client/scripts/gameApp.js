@@ -5,9 +5,6 @@ var displayBottomBoxHeight = 100;
 var displayBottomBoxLeftPadding = 5;
 var displayBottomBoxBottomPadding = 5;
 var displayBottomBoxesGutterPadding = 5;
-
-// var appWidth = canvas.getAttribute('width');
-// var appHeight = canvas.getAttribute('height');
 var attackButton = {
   x:195,
   y:385,
@@ -71,9 +68,9 @@ upperTextBox.src = 'images/battleScene/upperTextBox.png';
 heroStats.src = 'images/battleScene/heroStatus.png';
 heroStats.xcoord = (displayBottomBoxLeftPadding);
 heroStats.ycoord = (appHeight - displayBottomBoxHeight - displayBottomBoxBottomPadding);
-console.log(heroStats.xcoord);
-console.log(heroStats.ycoord);
-monster.src = 'images/battleScene/monster0.png';
+// console.log(heroStats.xcoord);
+// console.log(heroStats.ycoord);
+monster.src = newEnemy.sprite;
 background.src = 'images/battleScene/bg.png';
 battleOptions.src = 'images/battleScene/battleOptions.png';
 shield.src = 'images/shield.png';
@@ -82,51 +79,21 @@ enemyHealthBar.src = 'images/battleScene/hpBar.png';
 heroHealthBarBackground.src = 'images/battleScene/hpBarBackground.png';
 enemyHealthBarBackground.src = 'images/battleScene/hpBarBackground.png';
 
-
-
-
 function battleState(){
-
-
-
   newBattle = true;
-
   hero.currentHP = hero.maxHP;
   enemy.currentHP = enemy.maxHP;
-
-
   console.log('player' + hero.currentHP);
   console.log('enemy' + enemy.currentHP);
-
   clearCanvas(ctx);
-
-
   healthBarRender(1, 1);
-
-  // background.onload = function(){
-  //   ctx.drawImage(background,0,0);
-  // };
-  // monster.onload = function(){
-  //   ctx.drawImage(monster,282,140);
-  // };
-  // heroStats.onload = function(){
-  //   ctx.drawImage(heroStats,5,375);
-  // };
-  // battleOptions.onload = function(){
-  //   ctx.drawImage(battleOptions, 230, 375);
-  // };
-  // shield.onload = function(){
-  //   ctx.drawImage(shield, 165, 375);
-  // };
 
 //define event listeners for battle scene
   canvas.addEventListener('mousemove', checkPosBattle);
   canvas.addEventListener('mouseup', checkClickBattle);
   //TODO: create quit game listener
 
-
   function applyDMG(entity, dmg){
-
     var spotter = false;
     if(entity == hero){
 
@@ -139,8 +106,6 @@ function battleState(){
         setWinner(enemy.name, hero.name);
       }
       spotter = true;
-
-
     }
     if(entity == enemy){
       if (enemy.currentHP - dmg > 0) {
@@ -150,13 +115,10 @@ function battleState(){
       else {
         enemy.currentHP = 0;
         setWinner(hero.name, enemy.name);
-
       }
     }
-
     showTextBox();
     textAnimate();
-
     console.log('Hero: ' + hero.currentHP);
     console.log('Monster: ' + enemy.currentHP);
     var deltaHeroHP = (hero.currentHP/hero.maxHP);
@@ -164,33 +126,24 @@ function battleState(){
     // console.log(deltaHeroHP);
     // console.log(deltaEnemyHP);
 
-//bring back event listener after short delay and animate all
-//desired components
     setTimeout(function(){
       console.log('render TiMe!');
       healthBarRender(deltaHeroHP, deltaEnemyHP);
-
       if (enemy.currentHP == 0) {
-
         startNewBattle();
-
       }
       if(spotter){
         seizureMode();
       }
     }, 500);
   }
-
   function healthBarRender(deltaHeroHP, deltaEnemyHP){
     // ctx.clearRect(0,0,appWidth,appHeight);
-
     ctx.drawImage(heroHealthBarBackground, 35,410);
     ctx.drawImage(enemyHealthBarBackground, 425,200);
-
     ctx.drawImage(heroHealthBar, 35,410, (heroHealthBarWidth * deltaHeroHP), heroHealthBarHeight);
     ctx.drawImage(enemyHealthBar, 425,200, (enemyHealthBarWidth * deltaEnemyHP), enemyHealthBarHeight);
   }
-
   function checkPosBattle(mouseEvent){
     mouseX = mouseEvent.pageX - this.offsetLeft;
     mouseY = mouseEvent.pageY - this.offsetTop;
@@ -198,37 +151,25 @@ function battleState(){
     // console.log(mouseY);
   };
   function heroAttack(){
-
     newBattle = false;
-
     if (hero.currentHP > 0 && enemy.currentHP > 0 && newBattle == false) {
       canvas.removeEventListener('mouseup', checkClickBattle);
-
       var dmg = 0;
       var dmg = Math.floor((Math.random() * 100) + 100);
       console.log('hero swings for ' + dmg);
-
       setAttacker(hero.name);
       applyDMG(enemy, dmg);
     }
-
   }
-
   function monsterAttack(){
-
     if (hero.currentHP > 0 && enemy.currentHP > 0 && newBattle == false) {
-
       var dmg = 0;
       var dmg = Math.floor((Math.random() * 100) + 100);
       console.log('monster swings for ' + dmg);
-
       setAttacker(enemy.name);
       applyDMG(hero, dmg);
-
     }
-
   };
-
   function checkClickBattle(dmg){
     if(mouseX > attackButton.x && mouseX < attackButton.x + attackButton.width){
       if(mouseY > attackButton.y && mouseY < attackButton.y + attackButton.height){
@@ -240,8 +181,6 @@ function battleState(){
           // seizureMode();
           monsterAttack();
           canvas.addEventListener('mouseup', checkClickBattle);}, 1500);
-
-
         if(enemy.currentHP <=0) {
           console.log('You Win!');
           canvas.removeEventListener('mouseup',checkClickBattle);
@@ -262,24 +201,15 @@ function battleState(){
       ctx.drawImage(heroStats, heroStats.xcoord, heroStats.ycoord);
       ctx.drawImage(battleOptions, 215, 375);
       ctx.drawImage(shield, 165, 375);
-
-
       ctx.drawImage(heroHealthBarBackground, 35,410);
       ctx.drawImage(enemyHealthBarBackground, 425,200);
-
-
       var deltaHeroHP = (hero.currentHP/hero.maxHP);
       var deltaEnemyHP = (enemy.currentHP/enemy.maxHP);
-
+      
       setTimeout(function(){
-
         ctx.drawImage(heroHealthBar, 35,410, (heroHealthBarWidth * deltaHeroHP), heroHealthBarHeight);
         ctx.drawImage(enemyHealthBar, 425,200, 160, 10);
-
       }, 500);
-
-
-
       //text stuff for hero Status
       ctx.font = '14px Arial';
       ctx.fillStyle = 'white';
@@ -299,20 +229,12 @@ function battleState(){
   }
 
   function startNewBattle() {
-
     newBattle = true;
-
     enemy.currentHP = enemy.maxHP;
     hero.currentHP = hero.maxHP;
-
     clearCanvas(ctx);
-
     monsterName();
-
-    preLoad();
-
     battleScene();
-
   }
 
   monsterName();
