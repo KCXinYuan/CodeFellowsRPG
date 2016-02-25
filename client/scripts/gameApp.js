@@ -38,9 +38,10 @@ var jsAttackButton = {
 
 var hero = {
   name:'Charlie',
-  currentHP: 2000,
-  maxHP: 2000,
-  attack: 100
+  currentHP: 10000,
+  maxHP: 10000,
+  minAttack: 500,
+  maxAttack: 1000
 };
 
 // var enemy = {
@@ -207,7 +208,7 @@ function battleState(){
       canvas.removeEventListener('mouseup', checkClickBattle);
 
       var dmg = 0;
-      var dmg = Math.floor((Math.random() * 100) + 100);
+      var dmg = Math.floor((Math.random() * hero.maxAttack) + hero.minAttack);
       console.log('hero swings for ' + dmg);
 
       setAttacker(hero.name);
@@ -221,7 +222,7 @@ function battleState(){
     if (hero.currentHP > 0 && enemy.currentHP > 0 && newBattle == false) {
 
       var dmg = 0;
-      var dmg = Math.floor((Math.random() * 100) + 100);
+      var dmg = Math.floor((Math.random() * enemy.attack) + (enemy.attack-100));
       console.log('monster swings for ' + dmg);
 
       setAttacker(enemy.name);
@@ -299,8 +300,18 @@ function battleState(){
   }
 
   function monsterName(){
-    enemy.name = JSNames[Math.floor(Math.random()*JSNames.length)];
-    console.log(enemy.name);
+    if(enemy.type == 'javascript') {
+      enemy.name = JSNames[Math.floor(Math.random()*JSNames.length)];
+      console.log(enemy.name);
+    }
+    else if(enemy.type == 'css') {
+      enemy.name = CSSNames[Math.floor(Math.random()*JSNames.length)];
+      console.log(enemy.name);
+    }
+    else if(enemy.type == 'html') {
+      enemy.name = HTMLNames[Math.floor(Math.random()*JSNames.length)];
+      console.log(enemy.name);
+    }
   }
 
   function startNewBattle() {
