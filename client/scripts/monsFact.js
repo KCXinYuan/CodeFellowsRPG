@@ -34,15 +34,39 @@ Enemy.prototype.newType = function() {
   }
   console.log(this.type);
 };
+
+function chooseRandomPokemon() {
+  randomEnemy = randomPokemon[Math.floor(Math.random()*randomPokemon.length)];
+  console.log(randomPokemon);
+}
+
+function makeNewPokemon() {
+  enemy = new Enemy(randomEnemy.hp,randomEnemy.attack,randomEnemy.type,randomEnemy.sprite);
+  console.log(enemy);
+}
+
+function convertNewType() {
+  enemy.newType();
+  console.log(enemy);
+}
+
+// $.get('http://localhost:3000/getRandom', function(data) {
+//   randomPokemon=data;
+//   console.log(randomPokemon);
+// }).then(function() {
+//   randomEnemy = randomPokemon[Math.floor(Math.random()*randomPokemon.length)];
+// }).then(function() {
+//   enemy = new Enemy(randomEnemy.hp,randomEnemy.attack,randomEnemy.type,randomEnemy.sprite);
+//   console.log(enemy);
+// }).then(function() {
+//   enemy.newType();
+//   console.log(enemy);
+// });
+
 $.get('http://localhost:3000/getRandom', function(data) {
   randomPokemon=data;
   console.log(randomPokemon);
-}).then(function() {
-  randomEnemy = randomPokemon[Math.floor(Math.random()*randomPokemon.length)];
-}).then(function() {
-  enemy = new Enemy(randomEnemy.hp,randomEnemy.attack,randomEnemy.type,randomEnemy.sprite);
-  console.log(enemy);
-}).then(function() {
-  enemy.newType();
-  console.log(enemy);
-});
+})
+.then(function(){chooseRandomPokemon();})
+.then(function(){makeNewPokemon();})
+.then(function(){convertNewEnemy();});
