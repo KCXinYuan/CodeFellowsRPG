@@ -40,11 +40,11 @@ var hero = {
   attack: 100
 };
 
-// var enemy = {
-//   name:'bug',
-//   currentHP: 1000,
-//   maxHP: 1000
-// };
+var enemy = {
+  name:'bug',
+  currentHP: 1000,
+  maxHP: 1000
+};
 
 var newBattle;
 
@@ -64,20 +64,13 @@ var enemyHealthBarWidth = 160;
 var enemyHealthBarHeight = 10;
 var heroHealthBarWidth = 160;
 var heroHealthBarHeight = 10;
-
 upperTextBox.src = 'images/battleScene/upperTextBox.png';
 heroStats.src = 'images/battleScene/heroStatus.png';
 heroStats.xcoord = (displayBottomBoxLeftPadding);
 heroStats.ycoord = (appHeight - displayBottomBoxHeight - displayBottomBoxBottomPadding);
-<<<<<<< HEAD
 // console.log(heroStats.xcoord);
 // console.log(heroStats.ycoord);
 monster.src = newEnemy.sprite;
-=======
-console.log(heroStats.xcoord);
-console.log(heroStats.ycoord);
-
->>>>>>> 66286cc8f926ace5b7a43cc8ad13ccbc607f9498
 background.src = 'images/battleScene/bg.png';
 battleOptions.src = 'images/battleScene/battleOptions.png';
 shield.src = 'images/shield.png';
@@ -86,25 +79,10 @@ enemyHealthBar.src = 'images/battleScene/hpBar.png';
 heroHealthBarBackground.src = 'images/battleScene/hpBarBackground.png';
 enemyHealthBarBackground.src = 'images/battleScene/hpBarBackground.png';
 
-<<<<<<< HEAD
-=======
-var drawMonster = function(){
-  ctx.drawImage(monster,282,140);
-};
-
-
->>>>>>> 66286cc8f926ace5b7a43cc8ad13ccbc607f9498
 function battleState(){
   newBattle = true;
-<<<<<<< HEAD
   hero.currentHP = hero.maxHP;
   enemy.currentHP = enemy.maxHP;
-=======
-  monster.src = enemy.sprite;
-  hero.currentHP = hero.maxHP;
-  enemy.currentHP = enemy.maxHP;
-
->>>>>>> 66286cc8f926ace5b7a43cc8ad13ccbc607f9498
   console.log('player' + hero.currentHP);
   console.log('enemy' + enemy.currentHP);
   clearCanvas(ctx);
@@ -215,27 +193,19 @@ function battleState(){
     }
   };
 
-
   function battleScene(){
     clearCanvas(ctx);
-    ctx.drawImage(background,0,0);
     setTimeout(function(){
-
+      ctx.drawImage(background,0,0);
       ctx.drawImage(monster,282,140);
       ctx.drawImage(heroStats, heroStats.xcoord, heroStats.ycoord);
       ctx.drawImage(battleOptions, 215, 375);
       ctx.drawImage(shield, 165, 375);
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 66286cc8f926ace5b7a43cc8ad13ccbc607f9498
       ctx.drawImage(heroHealthBarBackground, 35,410);
       ctx.drawImage(enemyHealthBarBackground, 425,200);
       var deltaHeroHP = (hero.currentHP/hero.maxHP);
       var deltaEnemyHP = (enemy.currentHP/enemy.maxHP);
-      
+
       setTimeout(function(){
         ctx.drawImage(heroHealthBar, 35,410, (heroHealthBarWidth * deltaHeroHP), heroHealthBarHeight);
         ctx.drawImage(enemyHealthBar, 425,200, 160, 10);
@@ -264,10 +234,6 @@ function battleState(){
     hero.currentHP = hero.maxHP;
     clearCanvas(ctx);
     monsterName();
-<<<<<<< HEAD
-=======
-
->>>>>>> 66286cc8f926ace5b7a43cc8ad13ccbc607f9498
     battleScene();
   }
 
