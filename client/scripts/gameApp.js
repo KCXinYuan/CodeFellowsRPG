@@ -312,6 +312,11 @@ function battleState(){
 
     clearCanvas(ctx);
 
+    chooseRandomPokemon();
+    makeNewPokemon();
+    convertNewType();
+    monster.src = enemy.sprite;
+
     monsterName();
 
     battleScene();
