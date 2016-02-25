@@ -1,4 +1,4 @@
-var FPS = 60;
+var FPS = 15;
 var now = Date.now();
 var dt;
 var last = now;

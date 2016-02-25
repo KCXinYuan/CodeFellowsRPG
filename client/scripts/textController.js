@@ -1,29 +1,37 @@
-
-
 var textBox = new Image();
 
 function showTextBox() {
+
+
   console.log('show Text Box');
-  textBox.src = 'images/battleScene/upperTextBox.png';
-  textBox.xcoord = 14;
-  textBox.ycoord = 14;
+
+
+  textBox.src = 'images/battleScene/upperTextBox1.png';
+  textBox.xcoord = 4;
+  textBox.ycoord = 7;
+
+
   ctx.drawImage(textBox, textBox.xcoord, textBox.ycoord);
+
 }
+
+
 function hideTextBox() {
+
   clearCanvas(ctx);
   ctx.fillStyle = 'black';
   ctx.fillRect(0,0,appWidth, appHeight);
   setTimeout(function(){
     ctx.drawImage(background,0,0);
     ctx.drawImage(monster,282,140);
-    ctx.drawImage(heroStats,5,375);
-    ctx.drawImage(battleOptions, 155, 375);
+    ctx.drawImage(heroStats,0,375);
+    ctx.drawImage(battleOptions, 150, 370);
     ctx.drawImage(shield, 165, 375);
     //text stuff for heroStatus
     ctx.font = '14px Arial';
-    ctx.fillStyle = 'white';
-    ctx.fillText('Hero Name',10,390);
-    ctx.fillText('HP:',10,420);
+    ctx.fillStyle = '#121f1f';
+    ctx.fillText('Hero Name',400,390);
+    ctx.fillText('HP:',20,420);
     //text stuff for battleOptions
     ctx.fillText('Attack', 200, 395);
 
@@ -56,7 +64,7 @@ function textAnimate(entity) {
 
 
   ctx.font = 'normal 16px "verdana"';
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = '#121f1f';
   ctx.fillText(myText.substr(0, count), 28, 42);
   count++;
 
