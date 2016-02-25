@@ -1,7 +1,7 @@
 function Enemy (hp,attack,type,sprite) {
-  this.currentHP = hp;
-  this.maxHP = hp;
-  this.attack = attack;
+  this.currentHP = hp*50;
+  this.maxHP = hp*50;
+  this.attack = attack*5;
   this.type = type;
   this.sprite = sprite;
 }
