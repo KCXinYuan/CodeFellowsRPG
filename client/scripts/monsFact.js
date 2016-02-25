@@ -69,4 +69,4 @@ $.get('http://localhost:3000/getRandom', function(data) {
 })
 .then(function(){chooseRandomPokemon();})
 .then(function(){makeNewPokemon();})
-.then(function(){convertNewEnemy();});
+.then(function(){convertNewType();});
