@@ -15,12 +15,10 @@
 
   };
 
-
   function displayArticle(data){
     var template = Handlebars.compile($('#article-template').text());
     $('#hook').html(template(data));
   }
-
 
   $(document).ready(function(){
     displayArticle(data.home);
