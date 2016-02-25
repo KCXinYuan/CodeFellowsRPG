@@ -64,7 +64,7 @@ function makeTables() {
 }
 
 
-// Takes pokemon object and inserts into database
+// Takes pokemon object and inserts into database. p = pokemon object
 function insertPokemon(p) {
   db.serialize(function() {
     console.log('Inserting Pokemon #' + p.pkdx_id + ' into database');
@@ -74,7 +74,7 @@ function insertPokemon(p) {
   });
 }
 
-// Takes pokemon object and inserts its types into database
+// Takes pokemon object and inserts its types into database. p = pokemon object
 function insertTypes(p) {
   p.types.forEach(function(ele){
     db.run('INSERT INTO Types(pkdx_id, type)' +
