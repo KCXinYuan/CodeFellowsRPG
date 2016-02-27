@@ -1,5 +1,3 @@
-
-
 var textBox = new Image();
 
 function showTextBox() {

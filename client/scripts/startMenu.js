@@ -2,7 +2,7 @@ var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = 640;
 canvas.height = 480;
-// document.body.appendChild(canvas);
+//document.body.appendChild(canvas);
 $('#mycanvas').append(canvas);
 var appWidth = canvas.getAttribute('width');
 var appHeight = canvas.getAttribute('height');
@@ -112,7 +112,7 @@ var mouseY;
     for (i = 0; i < buttonX.length; i++){
       if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
         if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight){
-          console.log('(' + mouseX + ', ' + mouseY + ')');
+          // console.log('(' + mouseX + ', ' + mouseY + ')');
           shieldVis = true;
           shieldX[0] = buttonX[i] - (shieldWidth);
           shieldY[0] = buttonY[i];
@@ -126,8 +126,8 @@ var mouseY;
   };
 
   function checkClick(){
-    console.log('x: ' + mouseX);
-    console.log('y: ' + mouseY);
+    // console.log('x: ' + mouseX);
+    // console.log('y: ' + mouseY);
     var fadeId = 0;
     for (i=0; i < buttonX.length; i++){
       if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
